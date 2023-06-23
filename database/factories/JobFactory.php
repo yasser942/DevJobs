@@ -47,7 +47,7 @@ class JobFactory extends Factory
             }
         
         return [
-            'user_id' => 2,
+            'user_id' => 1,
             'title'=>$this->faker->sentence(),
             'tags'=> $randomTags,
             'company'=>$this->faker->company(),
@@ -55,6 +55,7 @@ class JobFactory extends Factory
             'website'=>$this->faker->url(),
             'location'=>$this->faker->city(),
             'description'=>$this->faker->paragraph(5),
+            'photo_path' => 'public/images/fhrIS1RjBmLU1fbToU08GFN26uKhXunNvT7wx6te.png',
 
 
         ];

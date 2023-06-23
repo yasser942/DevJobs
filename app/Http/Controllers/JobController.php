@@ -15,16 +15,14 @@ class JobController extends Controller
     public function index(Job $job , Request $request)
     {
         
-
+        $searchQuery = request('search');
          $jobs = Job::latest()
         ->filter(request(['tag', 'search']))
         ->paginate(50);
 
        
         
-        return view('job.index',[
-            'jobs' =>  $jobs
-        ]);
+        return view('job.index',compact('jobs','searchQuery'));
     }
 
     /**

@@ -6,7 +6,7 @@ class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg
 @auth
 <a
 href="{{route('jobs.create')}}"
-class="absolute top-1/3 right-10 bg-black text-white py-2 px-5"
+class="absolute top-1/3 right-10 bg-red-500 text-white py-2 px-5"
 >Post Job</a
 >
 @endauth

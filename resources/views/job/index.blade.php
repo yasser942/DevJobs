@@ -44,6 +44,7 @@
                         name="search"
                         class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
                         placeholder="Search Laravel Gigs..."
+                        value="{{old('search',$searchQuery)}}"
                     />
                     
                     <div class="absolute top-2 right-2">
@@ -91,6 +92,11 @@
                             </ul>
                             <div class="text-lg mt-4">
                                 <i class="fa-solid fa-location-dot"></i> {{$job->location}}
+                            </div>
+                            <div class="text-lg mt-4">
+                                
+                                <span class="text-gray-500">{{ $job->created_at->format('Y-m-d H:i:s') }}</span>
+                                
                             </div>
                         </div>
                     </div>
