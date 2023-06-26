@@ -15,7 +15,18 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [JobController::class,'index'], );
+Route::group(['middleware' => ['auth', 'admin']], function () {
+   
+    Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+    #Route::get('/users/{user}', [AdminController::class, 'show'])->name('users.show');
+   
+
+
+    Route::get('admin/jobs/manage', [JobController::class, 'manageAll'])->name('jobs.manage.all');
+});
+
+Route::get('/', [JobController::class,'index'], )->name('home');
 Route::put('/jobs/{id}', [JobController::class, 'update'])->name('jobs.update')->middleware('auth');
 Route::get('/jobs/create', [JobController::class, 'create'])->name('jobs.create')->middleware('auth');
 Route::post('/jobs', [JobController::class, 'store'])->name('jobs.store')->middleware('auth');

@@ -147,4 +147,16 @@ class JobController extends Controller
 
     return view("job.manage", compact('jobs','searchQuery'));
     }
+
+    public function manageAll()
+    {
+
+        $searchQuery = request('search');
+        // Retrieve all jobs
+        $jobs = Job::latest()->filter(request([ 'search']))->paginate(50);
+        
+
+        // Pass the jobs data to the view
+        return view('admin.manage_jobs', compact('jobs','searchQuery'));
+    }
 }

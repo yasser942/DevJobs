@@ -35,6 +35,21 @@
                
                 @auth
 
+                @if (auth()->user()->role == 'admin')
+                <li>
+                    <a href="{{ route('jobs.manage.all') }}" class="hover:text-laravel">
+                        <i class="fa-solid fa-gear"></i> Manage All Jobs
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('users.index') }}" class="hover:text-laravel">
+                        <i class="fa-solid fa-gear"></i> Manage Users
+                    </a>
+                </li>
+                @endif
+               
+               
+
                 <li>
                     <i class="fa-solid fa-user hover:text-laravel"></i>
                     <span>{{ auth()->user()->name }}</span>
@@ -43,7 +58,7 @@
 
                 <li>
                     <a href="{{route('jobs.manage')}}" class="hover:text-laravel"
-                        ><i class="fa-solid fa-gear"></i> Manage Jobs</a
+                        ><i class="fa-solid fa-gear"></i> Manage My Jobs</a
                     >
                 </li>
                 <li>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -14,8 +15,16 @@ class UserController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    {   
+        $currentUser = Auth::user();
+        $searchQuery = request('search');
+        
+        $users = User::where('id', '!=', $currentUser->id)
+                    ->search($searchQuery)
+                    ->latest()
+                    ->paginate(10);
+
+        return view('users.index', compact('users', 'searchQuery'));
     }
 
     /**
@@ -97,7 +106,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
     }
 
 
@@ -115,6 +124,17 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+       
+
+    // Check if the authenticated user is authorized to delete the user
+    if (!auth()->user()->role == 'admin' && Auth::user()->id !== $user->id) {
+        abort(403, 'Unauthorized');
+    }
+
+    // Delete the user
+    $user->delete();
+
+    return redirect()->route('users.index')->with('success', 'User deleted successfully');
     }
 }

@@ -63,6 +63,6 @@ class Job extends Model
     }
 
     public function user (){
-        $this-> hasOne(User::class);
+        $this-> hasOne(User::class, 'user_id');
     }
 }

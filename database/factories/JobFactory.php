@@ -47,7 +47,7 @@ class JobFactory extends Factory
             }
         
         return [
-            'user_id' => 2,
+            'user_id' => 3,
             'title'=>$this->faker->sentence(),
             'tags'=> $randomTags,
             'company'=>$this->faker->company(),
