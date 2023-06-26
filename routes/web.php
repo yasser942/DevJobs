@@ -19,7 +19,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
    
     Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');
     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
-   
+   //comment
 
 
     Route::get('admin/jobs/manage', [JobController::class, 'manageAll'])->name('jobs.manage.all');
