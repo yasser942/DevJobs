@@ -19,7 +19,6 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
    
     Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');
     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
-    #Route::get('/users/{user}', [AdminController::class, 'show'])->name('users.show');
    
 
 
