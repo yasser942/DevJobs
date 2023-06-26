@@ -36,6 +36,12 @@
                 @auth
 
                 <li>
+                    <i class="fa-solid fa-user hover:text-laravel"></i>
+                    <span>{{ auth()->user()->name }}</span>
+                </li>
+                
+
+                <li>
                     <a href="{{route('jobs.manage')}}" class="hover:text-laravel"
                         ><i class="fa-solid fa-gear"></i> Manage Jobs</a
                     >

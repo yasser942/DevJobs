@@ -25,7 +25,7 @@ Route::get('/jobs/{id}/edit', [JobController::class, 'edit'])->name('jobs.edit')
 Route::delete('/jobs/{id}', [JobController::class, 'destroy'])->name('jobs.delete')->middleware('auth');
 
 
-
+//New changes
 
 
 

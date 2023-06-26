@@ -108,6 +108,11 @@
                                 accept="image/*"
                             />
                         </div>
+                        @if ($job->photo_path)
+                            <p>Current Photo Path: {{$job->photo_path}}</p>
+                        @else
+                            <p>No photo uploaded</p>
+                        @endif
 
                         <div class="mb-6">
                             <label

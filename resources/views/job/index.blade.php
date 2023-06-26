@@ -95,8 +95,9 @@
                             </div>
                             <div class="text-lg mt-4">
                                 
-                                <span class="text-gray-500">{{ $job->created_at->format('Y-m-d H:i:s') }}</span>
-                                
+                                <span class="text-gray-500">
+                                    <i class="fa-solid fa-calendar"></i> {{ $job->created_at->format('Y-m-d H:i:s') }}
+                                  </span>
                             </div>
                         </div>
                     </div>

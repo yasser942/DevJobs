@@ -53,6 +53,13 @@
                                     ><i class="fa-solid fa-globe"></i> Visit
                                     Website</a
                                 >
+
+                                @if(auth()->check() && $job->user_id === auth()->user()->id)
+                                
+                                <a href="{{ route('jobs.manage') }}" class="block bg-green-500 text-white py-2 rounded-xl hover:opacity-80">
+                                    <i class="fa-solid fa-gear"></i> Manage Jobs
+                                </a>
+                                @endif
                                <div>
                                
                                 
