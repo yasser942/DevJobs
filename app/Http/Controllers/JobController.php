@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class JobController extends Controller
@@ -159,4 +161,32 @@ class JobController extends Controller
         // Pass the jobs data to the view
         return view('admin.manage_jobs', compact('jobs','searchQuery'));
     }
+
+            public function deleteAll()
+        {
+            // Retrieve the authenticated user
+                $user = auth()->user();
+                
+                // Retrieve all jobs belonging to the user
+                $jobs = $user->jobs;
+                
+                // Delete each job
+                foreach ($jobs as $job) {
+                    $job->delete();
+                }
+
+            return redirect('/')->with('success', 'All jobs have been deleted.');
+        }
+        public function deleteAllJobs()
+            {
+                // Check if the authenticated user is an admin
+                if (auth()->user()->role == 'admin') {
+                    // Delete all jobs
+                    Job::truncate();
+
+                    return redirect('/')->with('success', 'All jobs have been deleted.');
+                } else {
+                    // If the user is not an admin, return an error or redirect to a different page
+                }
+            }
 }

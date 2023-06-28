@@ -19,6 +19,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
    
     Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');
     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::delete('admin/jobs', [JobController::class, 'deleteAllJobs'])->name('jobs.deleteAllJobs');
    //comment
 
 
@@ -33,6 +34,8 @@ Route::get('/jobs/manage', [JobController::class, 'manage'])->name('jobs.manage'
 Route::get('/jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
 Route::get('/jobs/{id}/edit', [JobController::class, 'edit'])->name('jobs.edit')->middleware('auth');
 Route::delete('/jobs/{id}', [JobController::class, 'destroy'])->name('jobs.delete')->middleware('auth');
+Route::delete('/jobs', [JobController::class, 'deleteAll'])->name('jobs.deleteAll')->middleware('auth');
+
 
 
 //New changes

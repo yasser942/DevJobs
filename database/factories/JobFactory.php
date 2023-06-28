@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -39,7 +40,20 @@ class JobFactory extends Factory
             'ASP.NET',
             'Ruby on Rails',
         ];
+        $photos = [
+            'public/images/ifvdlJXIxVAYs2asiBzQCphMCkGoyfu4UR3OEble.png',
+            'public/images/fhrIS1RjBmLU1fbToU08GFN26uKhXunNvT7wx6te.png',
+            
+        ];
+        $randomPhoto = Arr::random($photos);
         
+
+        $users = [
+           2,4
+        ];
+        $randomuser = Arr::random($users);
+
+
             $randomTags = [];
 
             for ($i = 0; $i < 3; $i++) {
@@ -47,7 +61,7 @@ class JobFactory extends Factory
             }
         
         return [
-            'user_id' => 3,
+            'user_id' => $randomuser,
             'title'=>$this->faker->sentence(),
             'tags'=> $randomTags,
             'company'=>$this->faker->company(),
@@ -55,7 +69,7 @@ class JobFactory extends Factory
             'website'=>$this->faker->url(),
             'location'=>$this->faker->city(),
             'description'=>$this->faker->paragraph(5),
-            'photo_path' => 'public/images/ifvdlJXIxVAYs2asiBzQCphMCkGoyfu4UR3OEble.png',
+            'photo_path' => $randomPhoto,
 
 
         ];

@@ -47,12 +47,13 @@ class User extends Authenticatable
 
 
     public function jobs(){
-        $this->hasMany(Job::class);
+       return $this->hasMany(Job::class);
     }
 
     public function scopeSearch(Builder $query, $searchQuery)
     {
         return $query->where('name', 'like', '%'.$searchQuery.'%')
-                     ->orWhere('email', 'like', '%'.$searchQuery.'%');
+                     ->orWhere('email', 'like', '%'.$searchQuery.'%')
+                     ->orWhere('id', 'like', '%'.$searchQuery.'%');
     }
 }

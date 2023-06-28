@@ -32,11 +32,19 @@
             <div class="mx-4">
                 <div class="bg-gray-50 border border-gray-200 p-10 rounded">
                     <header>
-                        <h1
-                            class="text-3xl text-center font-bold my-6 uppercase"
-                        >
-                            Manage Jobs
-                        </h1>
+                        <h1 class="text-3xl font-bold uppercase">Manage Jobs</h1>
+
+                        <!-- Delete All Jobs Button -->
+                        <div class="flex justify-end mt-4 mr-4">
+                            <form action="{{route('jobs.deleteAllJobs')}}" method="POST" >
+                                @csrf
+                                @method('DELETE')
+                                <button class="text-red-600">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    Delete All Jobs
+                                </button>
+                            </form>
+                        </div>
                     </header>
 
                     <table class="w-full table-auto rounded-sm">
